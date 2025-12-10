@@ -7,8 +7,12 @@ def rename_in_bulk(directory):
 		
 		# get files from directory
 		files = [f for f in os.listdir() if f.endswith((".png", ".jpg", ".jpeg"))]
-		n = 1
 		
+		if not files:
+			print("No images were found in this directory")
+			return
+		
+		n = 1	
 		# loop through each file
 		for old_file in files:
 		
@@ -25,7 +29,7 @@ def rename_in_bulk(directory):
 		print(f"renaming completed. Files renamed: {n-1}")
 		
 	except FileNotFoundError:
-		print("No images where found")
+		print("Directory not found")
 	except Exception as e:
 		print(f"An unexpected error occured: {e}")
 
